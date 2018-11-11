@@ -1,4 +1,42 @@
+from enum import Enum
+
+
+class Exchange(Enum):
+    RADAR_RELAY = 'RADAR_RELAY'
+    PARADEX = 'PARADEX'
+    DDEX = 'DDEX'
+    ETHFINEX = 'ETHFINEX'
+
+
+class OrderType(Enum):
+    ASK = 'ASK'
+    BID = 'BID'
+
+
 tokens = {
     '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2': 'WETH',
-    '0xe41d2489571d322189246dafa5ebde1f4699f498': 'ZRX'
+    '0xe41d2489571d322189246dafa5ebde1f4699f498': 'ZRX',
+    '0x0d8775f648430679a709e98d2b0cb6250d2887ef': 'BAT',
+    '0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359': 'DAI',
+    '0x0f5d2fb29fb7d3cfee444a200298f468908cc942': 'MANA',
+    '0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2': 'MKR',
+    '0xd26114cd6ee289accf82350c8d8487fedb8a0c07': 'OMG',
+    '0x744d70fdbe2ba4cf95131626614a1763df805b9e': 'SNT',
+    '0xe0b7927c4af23765cb51314a0e0521a9645f0e2a': 'DGD',
+    '0x4156d3342d5c385a87d264f90653733592000581': 'SALT',
+    '0x0abdace70d3790235af448c88547603b945604ea': 'DNT',
+    '0xd0a4b8946cb52f0661273bfbc6fd0e0c75fc6433': 'STORM',
+    '0x05f4a42e251f2d52b8ed15e9fedaacfcef1fad27': 'ZIL',
+    '0x8f8221afbb33998d8584a2b05749ba73c37a938a': 'REQ',
+    '0x1985365e9f78359a9b6ad760e32412f4a445e862': 'REP',
+    '0x42d6622dece394b54999fbd73d108123806f6a18': 'SPANK',
+    '0x58b6a8a3302369daec383334672404ee733ab239': 'LPT',
+    '0x0e0989b1f9b8a38983c2ba8053269ca62ec9b195': 'POE',
+    '0x41e5560054824ea6b0732e656e3ad64e20e94e45': 'CVC',
+    '0x22365168c8705e95b2d08876c23a8c13e3ad72e2': 'PASS',
+    '0x99ea4db9ee77acd40b119bd1dc4e33e1c070b80d': 'QSP',
+    '0x514910771af9ca656af840dff83e8264ecf986ca': 'LINK',
+    '0x595832f8fc6bf59c85c527fec3740a1b7a361269': 'POWR',
+    '0xdd974d5c2e2928dea5f71b9825b8b646686bd200': 'KNC',
+    '0xbf2179859fc6d5bee9bf9158632dc51678a4100e': 'ELF'
 }

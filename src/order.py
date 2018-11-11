@@ -1,11 +1,20 @@
+from constants import Exchange, OrderType, tokens
+
+
 class Order:
-    def __init__(self):
-        self.quote_token = None
-        self.base_token = None
-        self.type = None
-        self.
+    def __init__(self, quote_token, base_token, order_type, exchange, rate, amount):
+        self.quote_token = tokens[quote_token]
+        self.base_token = tokens[base_token]
+        self.order_type = OrderType[order_type]
+        self.exchange = Exchange[exchange]
+        self.rate = rate
+        self.amount = amount
 
+    def __repr__(self):
+        if self.order_type == OrderType.BID:
+            return '%s order to buy %f %r for %r at exchange rate %f on %s.' \
+                   % (self.order_type.value, float(self.amount), self.quote_token, self.base_token, float(self.rate), self.exchange.value)
 
-    @classmethod
-    def load_from_radar(cls, **radar_book):
-        pass
+        if self.order_type == OrderType.ASK:
+            return '%s order to sell %f %r for %r at exchange rate %f on %s.' \
+                   % (self.order_type.value, float(self.amount), self.base_token, self.quote_token, float(self.rate), self.exchange.value)
