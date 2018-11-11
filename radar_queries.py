@@ -8,6 +8,7 @@ marketID = 'ZRX-WETH'
 
 def main():
     requests.post(ORDERBOOK_ENDPOINT, marketID)
+    print 'hehe'
     print 'Dupa'
 
 
