@@ -6,9 +6,6 @@ ORDERBOOK_ENDPOINT = 'https://api.radarrelay.com/v2/markets/{marketID}/book'
 marketID = 'ZRX-WETH'
 
 
-
-
-
 def main():
     URL = ORDERBOOK_ENDPOINT.format(
         marketID=marketID
