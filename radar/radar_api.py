@@ -5,14 +5,17 @@ import requests
 
 from radar_book import RadarBook
 from src.exceptions import ExchangeException
+from src.constants import tokens
 
 MARKETS_ENDPOINT = 'https://api.radarrelay.com/v2/markets'
 ORDERBOOK_ENDPOINT = 'https://api.radarrelay.com/v2/markets/{marketID}/book'
+TOKENS_ENDPOINT = 'https://api.radarrelay.com/v2/tokens'
 
 
 def get_markets():
     me = MARKETS_ENDPOINT
-    r = requests.get(me)
+    payload = {'perPage': 100, 'page': 1}  # Max 100 markets per page
+    r = requests.get(me, params=payload)
 
     if r.status_code == 200:
         r_json = json.loads(r.text)
@@ -35,18 +38,36 @@ def load_book_for_market(marketID):
         return book
 
     else:
-        raise ExchangeException("Invalid request status code {}".format(r.status_code),
+        raise ExchangeException(message="Invalid request status code {}".format(r.status_code),
                                 status_code=r.status_code)
 
-#
-# def main():
-#     markets = get_markets()
-#     # print markets
-#     # full_book = map(load_book_for_market, markets)
-#     full_book = load_book_for_market('BAT-WETH')
-#     pp.pprint(full_book.asks)
-#     pp.pprint(full_book.bids)
-#
-#
-# if __name__ == '__main__':
-#     main()
+
+def get_token_list():
+    tle = TOKENS_ENDPOINT
+    r = requests.get(tle)
+
+    if r.status_code == 200:
+        r_json = json.loads(r.text)
+        return [str(t['symbol']) for t in r_json]
+
+    else:
+        raise ExchangeException(message="Invalid request status code {}".format(r.status_code),
+                                status_code=r.status_code)
+
+
+def main():
+    # toks = tokens.values()
+    # vals = []
+    # for tok in toks:
+    #     if tok not in ['WETH', 'DAI']:
+    #         print tok
+    #         book = load_book_for_market('{}-WETH'.format(tok))
+    #         vals.append((tok, book.asks, book.bids))
+    # pp.pprint(vals)
+    a = load_book_for_market('VEE-WETH')
+    pp.pprint([a.asks, a.bids])
+
+
+if __name__ == '__main__':
+    main()
+0.000041810157640108

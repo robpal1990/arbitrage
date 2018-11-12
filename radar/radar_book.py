@@ -8,7 +8,7 @@ class RadarBook:
         self.pair = pair
 
     def __repr__(self):
-        return 'Order book for pair %s' % (self.pair)
+        return 'Order book for pair %s' % self.pair
 
     @classmethod
     def load_from_market_pair(cls, marketID, **market_json):
@@ -19,7 +19,7 @@ class RadarBook:
 
         bids = ([Order(market_json['quoteTokenAddress'],
                        market_json['baseTokenAddress'],
-                       'ASK', 'RADAR_RELAY', bid['price'],
-                       bid['remainingQuoteTokenAmount']) for bid in market_json['bids']])
+                       'BID', 'RADAR_RELAY', bid['price'],
+                       bid['remainingBaseTokenAmount']) for bid in market_json['bids']])
 
         return cls(asks, bids, marketID)
